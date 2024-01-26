@@ -11,6 +11,7 @@ router.get("/dashboard", authUser, userCtrl.dashboard);
 router.get("/dashboard-admin", authAdmin, userCtrl.dashboard);
 router.get("/all", authAdmin, userCtrl.getAllUsers);
 
+router.post("/create-project", authUser, userCtrl.sendProject);
 router.post("/create", authAdmin, userCtrl.createOneUsers);
 
 module.exports = router;
