@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 });
 app.use(fileUpload())
 app.use("/api/users", usersRouter);
+app.use("/api/projects", require("./Router/Projects"));
 
 server.listen(4500, function () {
   console.debug(`listening on port 4500`);
