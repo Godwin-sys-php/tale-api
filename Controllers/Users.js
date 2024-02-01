@@ -104,7 +104,10 @@ exports.dashboard = async (req, res) => {
     const caisse = await Transactions.customQuery(
       "SELECT * FROM transactions ORDER BY id DESC LIMIT 1"
     );
-    const projects = await Projects.findOne({ published: true });
+    const projects = await Projects.customQuery(
+      "SELECT * FROM projects ORDER BY id DESC",
+      [],
+    );
     const events = await Events.findOne({ published: true });
 
     return res.status(200).json({
