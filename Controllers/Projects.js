@@ -43,3 +43,17 @@ exports.getOneProject = async (req, res,) => {
     return res.status(500).json({ error: true, message: "Une erreur inconnue a eu lieu" });
   }
 }
+
+exports.changeStatus = async (req, res,) => {
+  try {
+    const { id, status } = req.body;
+    const update = await Projects.updateOne({ status }, id);
+    return res.status(200).json({
+      success: true,
+      data: update,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: true, message: "Une erreur inconnue a eu lieu" });
+  }
+}

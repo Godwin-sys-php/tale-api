@@ -7,6 +7,8 @@ module.exports = (req, res, next) => {
   try {
     const token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authorization.split(' ')[1];
 
+    console.log(token);
+
     jwt.verify(token, process.env.TOKEN, async function(err, decoded) {      
 			if (err) {
         return res.status(400).json({ invalidToken: true, message: "Veuillez vous reconnecter", })

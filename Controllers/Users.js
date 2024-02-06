@@ -41,7 +41,7 @@ exports.loginAdmin = async (req, res) => {
       return res.status(200).json({
         logged: true,
         userInfo: user[0],
-        token: jwt.sign({ ...user[0] }, process.env.TOKEN_ADMIN, {
+        token: jwt.sign({ ...user[0] }, process.env.TOKEN, {
           expiresIn: 604800 * 30, // 30 weeks
         }),
       });
